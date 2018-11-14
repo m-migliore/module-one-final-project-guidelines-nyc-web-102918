@@ -2,4 +2,10 @@ require_relative '../config/environment'
 
 
 
-puts "HELLO WORLD"
+
+
+print_question
+
+
+
+# puts "HELLO WORLD"
