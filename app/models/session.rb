@@ -12,7 +12,7 @@ class Session
   end
 
   def pick_user(input)
-    self.user=User.create(name:"#{input}")
+    self.user = User.find_or_create_by(name:"#{input}")
   end
 
 

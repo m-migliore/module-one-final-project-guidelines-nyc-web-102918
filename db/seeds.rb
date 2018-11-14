@@ -3,7 +3,6 @@ Game.delete_all
 User.delete_all
 Question.delete_all
 
-User.create(name: "Matt")
 
   HISTORY_QUESTIONS.each do |history_hash|
     Question.create(category: history_hash[:category], difficulty: history_hash[:difficulty], question: history_hash[:question], correct_answer: history_hash[:correct_answer], incorrect_answer1: history_hash[:incorrect_answers][0],incorrect_answer2: history_hash[:incorrect_answers][1],incorrect_answer3: history_hash[:incorrect_answers][2] )

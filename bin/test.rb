@@ -2,7 +2,7 @@ require_relative '../config/environment'
 
 session = Session.new
 puts "Welcome to trivia! Enter username"
-# session.pick_user(gets.chomp)
+session.pick_user(gets.chomp)
 puts "Please enter number to pick a category \n"
 puts "1. History \n"
 puts "2. Geography \n"
