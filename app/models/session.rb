@@ -32,6 +32,15 @@ class Session
     end
   end
 
+  def make_answers
+    answers = []
+    answers << self.question[:correct_answer]
+    answers << self.question[:incorrect_answer1]
+    answers << self.question[:incorrect_answer2]
+    answers << self.question[:incorrect_answer3]
+    @answers=answers.shuffle
+  end
+
 
   def print_question
     # answers = self.question.make_answers
@@ -39,21 +48,39 @@ class Session
        "#{index+1}. #{HTMLEntities.new.decode val}"
     end
     print  "#{HTMLEntities.new.decode question[:question]} \n"
+    print "\n"
     print  "#{ready_answers[0]} \n"
     print  "#{ready_answers[1]} \n"
     print  "#{ready_answers[2]} \n"
     print  "#{ready_answers[3]} \n"
   end
 
+  def get_text_answer(answer)
+    index = answer.to_i - 1
+    self.answers[index]
+  end
 
-def make_answers
-  answers = []
-  answers << self.question[:correct_answer]
-  answers << self.question[:incorrect_answer1]
-  answers << self.question[:incorrect_answer2]
-  answers << self.question[:incorrect_answer3]
-  @answers=answers.shuffle
-end
+  # def check_answer(answer)
+  #   # answer=gets.chomp
+  #   if self.valid_answer?
+  #     if answer==self.question[:correct_answer]
+  #     end
+  #   else
+  #     "Please input a number between 1 and 4"
+  #   end
+  # end
+
+  def check_answer(answer)
+    user_answer = self.get_text_answer(answer)
+    if user_answer == self.question[:correct_answer]
+      print "YAY"
+    else
+      print "BOOO"
+    end
+  end
+
+
+
 
   def valid_answer?
     answer.to_i.between(1,4)
@@ -64,13 +91,6 @@ end
     self.answers[index]
   end
 
-  def check_answer(answer)
-    # answer=gets.chomp
-    if self.valid_answer?
-      if answer==self.question[:correct_answer]
-      end
-    else
-      "Please input a number between 1 and 4"
-    end
-  end
+
+
 end
