@@ -3,8 +3,7 @@ require_relative '../config/environment'
 
 
 
-
-print_question
+# print_question
 
 
 
