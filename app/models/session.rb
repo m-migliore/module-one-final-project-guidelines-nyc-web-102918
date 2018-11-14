@@ -1,5 +1,5 @@
 class Session
-  attr_accessor :question,:answers
+  attr_accessor :question,:answers, :user
 
   @@all = []
 
@@ -7,8 +7,14 @@ class Session
     # @question = Question.all.sample
     @question=question
     @answers=answers
+    @user=user
     @@all << self
   end
+
+  def pick_user(input)
+    self.user=User.create(name:"#{input}")
+  end
+
 
   def pick_category(input)
     # input=gets.chomp
@@ -75,11 +81,10 @@ class Session
     if user_answer == self.question[:correct_answer]
       print "YAY"
     else
-      print "BOOO"
+      print "BOOO \n"
+      print "The correct answer is #{self.question[:correct_answer]}"
     end
   end
-
-
 
 
   def valid_answer?
@@ -90,6 +95,7 @@ class Session
     index = answer.to_i - 1
     self.answers[index]
   end
+
 
 
 
