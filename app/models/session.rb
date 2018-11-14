@@ -79,10 +79,10 @@ class Session
   def check_answer(answer)
     user_answer = self.get_text_answer(answer)
     if user_answer == self.question[:correct_answer]
-      print "YAY"
+      print "YAY \n"
     else
       print "BOOO \n"
-      print "The correct answer is #{self.question[:correct_answer]}"
+      print "The correct answer is #{HTMLEntities.new.decode self.question[:correct_answer]}\n"
     end
   end
 
