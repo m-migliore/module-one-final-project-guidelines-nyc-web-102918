@@ -1,18 +1,28 @@
 class Session
-  attr_accessor :question,:answers, :user
+  attr_accessor :question ,:answers, :user, :game
 
   @@all = []
 
   def initialize
     # @question = Question.all.sample
-    @question=question
-    @answers=answers
-    @user=user
+    @question = question
+    @answers = answers
+    @user = user
+    @game = game
     @@all << self
   end
 
   def pick_user(input)
-    self.user = User.find_or_create_by(name:"#{input}")
+    # self.user = User.find_or_create_by(name:"#{input}")
+
+    input_user =  User.find_by(name:"#{input}")
+
+    if input_user.nil?
+      self.user = User.create(name:"#{input}")
+    else
+      self.user = input_user
+    end
+
   end
 
 
@@ -61,6 +71,10 @@ class Session
     print  "#{ready_answers[3]} \n"
   end
 
+  def new_game
+    self.game = Game.create(user_id: self.user.id, question_id: self.question.id)
+  end
+
   def get_text_answer(answer)
     index = answer.to_i - 1
     self.answers[index]
@@ -79,8 +93,12 @@ class Session
   def check_answer(answer)
     user_answer = self.get_text_answer(answer)
     if user_answer == self.question[:correct_answer]
+      self.game.status = "correct"
+      self.game.save
       print "YAY \n"
     else
+      self.game.status = "incorrect"
+      self.game.save
       print "BOOO \n"
       print "The correct answer is #{HTMLEntities.new.decode self.question[:correct_answer]}\n"
     end
@@ -97,6 +115,9 @@ class Session
   end
 
 
+# def get_all_questions_answered_incorrectedly
+#   Question.includes(:games).where(games: {status: "incorrect"})
+# end
 
 
 end
