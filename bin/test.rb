@@ -13,3 +13,7 @@ session.make_answers
 session.print_question
 session.check_answer(gets.chomp)         #
 session.play_again?
+
+binding.pry
+
+meh

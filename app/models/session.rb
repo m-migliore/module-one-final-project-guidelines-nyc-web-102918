@@ -173,6 +173,7 @@ class Session
     when '3'
       system "clear"
       print "You have answered #{self.user.correct_percentage}% correctly. \n"
+      print "Your best category is: #{self.user.best_category}"
     end
   end
 
