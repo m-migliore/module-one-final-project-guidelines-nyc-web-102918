@@ -13,12 +13,12 @@ class Session
   end
 
   def welcome
-    puts "Welcome to Trivia!"
-    puts "\n"
-    puts "\n"
-    puts "Please enter a username"
-    puts "*********************** \n"
-    puts "\n"
+    print "Welcome to Trivia!"
+    print "\n"
+    print "\n"
+    print "Please enter a username"
+    print "*********************** \n"
+    print "\n"
   end
 
   def pick_user(input)
@@ -148,5 +148,10 @@ class Session
 #   Question.includes(:games).where(games: {status: "incorrect"})
 # end
 
+
+# to prevent duplicate questions from appearing, when new question is selected, its id is added to an array
+# then a new pick_category is run based on to selct question where the id is not in the old array
+
+# if no new questions, thne print 'you answered' everything'
 
 end

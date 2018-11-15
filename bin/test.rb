@@ -1,5 +1,5 @@
 require_relative '../config/environment'
-binding.pry
+
 session = Session.new
 session.welcome
 session.pick_user(gets.chomp)
