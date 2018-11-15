@@ -136,12 +136,13 @@ class Session
     self.answers[index]
   end
 
-  # def get_input(input)
-  #   input=gets.chomp
-  # end
+  def input
+    gets.chomp
+  end
 
-  def play_again?(input)
-    # print "Would you like to play again? Hit 1 for Yes and 2 for No"
+  def play_again?
+    print "Would you like to play again? Hit 1 for Yes and 2 for No \n"
+    input =self.input
     case input
     when  '1'
       print "Great!"
@@ -152,9 +153,9 @@ class Session
       self.make_answers
       self.print_question
       self.check_answer(gets.chomp)
-      self.play_again?(gets.chomp)
+      self.play_again?
     when '2'
-      print "Bye. Thanks for playing"
+      print "Bye. Thanks for playing \n"
     end
   end
 
