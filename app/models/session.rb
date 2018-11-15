@@ -16,14 +16,12 @@ class Session
     print "Welcome to Trivia!"
     print "\n"
     print "\n"
-    print "Please enter a username"
+    print "Please enter a username \n"
     print "*********************** \n"
     print "\n"
   end
 
   def pick_user(input)
-    # self.user = User.find_or_create_by(name:"#{input}")
-
     input_user =  User.find_by(name:"#{input}")
 
     if input_user.nil?
@@ -31,12 +29,9 @@ class Session
     else
       self.user = input_user
     end
-
   end
 
   def category_prompt
-    print "\n"
-    print "\n"
     print "Please enter number to pick a category \n"
     print "************************************** \n"
     print "\n"
@@ -86,11 +81,9 @@ class Session
 
 
   def print_question
-    # answers = self.question.make_answers
     ready_answers = self.answers.each_with_index.map do |val,index|
        "#{index+1}. #{HTMLEntities.new.decode val}"
     end
-    print "\n"
     print  "#{HTMLEntities.new.decode question[:question]} \n"
     print "\n"
     print  "#{ready_answers[0]} \n"
