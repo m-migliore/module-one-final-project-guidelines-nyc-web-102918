@@ -13,7 +13,11 @@ class Session
   end
 
   def welcome
-    print "Welcome to Trivia!"
+
+    print <<-HEREDOC
+
+
+    HEREDOC
     print "\n"
     print "\n"
     print "Please enter a username \n"
@@ -143,10 +147,13 @@ class Session
   end
 
   def play_again?
+    print "\n"
     print "Would you like to play again? Enter: \n"
+    print "************************************ \n"
     print "1. Yes \n"
     print "2. No \n"
     print "3. View Stats \n"
+    print "\n"
     input =self.input
     case input
     when  '1'
