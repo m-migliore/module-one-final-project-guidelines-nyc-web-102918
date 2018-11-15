@@ -136,6 +136,39 @@ class Session
     self.answers[index]
   end
 
+  # def get_input(input)
+  #   input=gets.chomp
+  # end
+
+  def play_again?(input)
+    # print "Would you like to play again? Hit 1 for Yes and 2 for No"
+    case input
+    when  '1'
+      print "Great!"
+      self.category_prompt                   #
+      self.pick_category(gets.chomp)
+      system "clear"
+      self.new_game
+      self.make_answers
+      self.print_question
+      self.check_answer(gets.chomp)
+      self.play_again?(gets.chomp)
+    when '2'
+      print "Bye. Thanks for playing"
+    end
+  end
+
+  # def new_round(input)
+  #   # self.category_prompt                   #
+  #   # self.pick_category(gets.chomp)
+  #   # system "clear"
+  #   # self.new_game
+  #   # self.make_answers
+  #   # self.print_question
+  #   # self.check_answer(gets.chomp)
+  #   # self.play_again?
+  # end
+
 
 # def get_all_questions_answered_incorrectedly
 #   Question.includes(:games).where(games: {status: "incorrect"})
