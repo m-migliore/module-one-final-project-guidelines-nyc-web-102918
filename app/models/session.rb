@@ -117,10 +117,12 @@ class Session
     if user_answer == self.question[:correct_answer]
       self.game.status = "correct"
       self.game.save
+      system "clear"
       print "YAY \n"
     else
       self.game.status = "incorrect"
       self.game.save
+      system "clear"
       print "BOOO \n"
       print "The correct answer is #{HTMLEntities.new.decode self.question[:correct_answer]}\n"
     end
@@ -141,11 +143,15 @@ class Session
   end
 
   def play_again?
-    print "Would you like to play again? Hit 1 for Yes and 2 for No. If you'd like to check your stats, hit 3.\n"
+    print "Would you like to play again? Enter: \n"
+    print "1. Yes \n"
+    print "2. No \n"
+    print "3. View Stats \n"
     input =self.input
     case input
     when  '1'
       print "Great!"
+      system "clear"
       self.category_prompt                   #
       self.pick_category(gets.chomp)
       system "clear"
@@ -155,9 +161,11 @@ class Session
       self.check_answer(gets.chomp)
       self.play_again?
     when '2'
+      system "clear"
       print "Bye. Thanks for playing \n"
     when '3'
-
+      system "clear"
+      print "You have answered #{self.user.correct_percentage}% correctly. \n"
     end
   end
 

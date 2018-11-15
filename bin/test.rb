@@ -4,8 +4,6 @@ session = Session.new
 system "clear"
 session.welcome
 session.pick_user(gets.chomp)
-binding.pry
-
 system "clear"
 session.category_prompt                   #
 session.pick_category(gets.chomp)

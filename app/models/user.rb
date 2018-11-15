@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   def total_question_amount
     Game.where(user_id: self.id).length
   end
+
+  def correct_percentage
+    (self.correct_question_amount / self.total_question_amount.to_f).round(2) * 100
+  end
 end
