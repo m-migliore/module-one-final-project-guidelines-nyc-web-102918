@@ -157,7 +157,7 @@ class Session
     when '2'
       print "Bye. Thanks for playing \n"
     when '3'
-      
+
     end
   end
 
