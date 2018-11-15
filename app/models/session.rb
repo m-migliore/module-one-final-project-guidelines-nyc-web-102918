@@ -141,7 +141,7 @@ class Session
   end
 
   def play_again?
-    print "Would you like to play again? Hit 1 for Yes and 2 for No \n"
+    print "Would you like to play again? Hit 1 for Yes and 2 for No. If you'd like to check your stats, hit 3.\n"
     input =self.input
     case input
     when  '1'
@@ -156,6 +156,8 @@ class Session
       self.play_again?
     when '2'
       print "Bye. Thanks for playing \n"
+    when '3'
+      
     end
   end
 
