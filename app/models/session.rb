@@ -12,6 +12,15 @@ class Session
     @@all << self
   end
 
+  def welcome
+    puts "Welcome to Trivia!"
+    puts "\n"
+    puts "\n"
+    puts "Please enter a username"
+    puts "*********************** \n"
+    puts "\n"
+  end
+
   def pick_user(input)
     # self.user = User.find_or_create_by(name:"#{input}")
 
@@ -23,6 +32,24 @@ class Session
       self.user = input_user
     end
 
+  end
+
+  def category_prompt
+    print "\n"
+    print "\n"
+    print "Please enter number to pick a category \n"
+    print "************************************** \n"
+    print "\n"
+    print "1. History \n"
+    print "2. Geography \n"
+    print "3. Film \n"
+    print "4. Music \n"
+    print "5. General Knowledge \n"
+    print "6. Sports \n"
+    print "7. Random \n"
+    print "\n"
+    print "************************************** \n"
+    print "\n"
   end
 
 
@@ -44,7 +71,7 @@ class Session
     when '7'
       self.question=Question.all.sample
     else
-      puts "Please enter a valid number"
+      print "Please enter a valid number"
     end
   end
 
@@ -63,12 +90,14 @@ class Session
     ready_answers = self.answers.each_with_index.map do |val,index|
        "#{index+1}. #{HTMLEntities.new.decode val}"
     end
+    print "\n"
     print  "#{HTMLEntities.new.decode question[:question]} \n"
     print "\n"
     print  "#{ready_answers[0]} \n"
     print  "#{ready_answers[1]} \n"
     print  "#{ready_answers[2]} \n"
     print  "#{ready_answers[3]} \n"
+    print "\n"
   end
 
   def new_game

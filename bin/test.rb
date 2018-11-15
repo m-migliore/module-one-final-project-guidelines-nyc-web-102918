@@ -1,20 +1,12 @@
 require_relative '../config/environment'
 binding.pry
 session = Session.new
-puts "Welcome to trivia! Enter username"
+session.welcome
 session.pick_user(gets.chomp)
-puts "Please enter number to pick a category \n"
-puts "1. History \n"
-puts "2. Geography \n"
-puts "3. Film \n"
-puts "4. Music \n"
-puts "5. General Knowledge \n"
-puts "6. Sports \n"
-puts "7. Random \n"
+session.category_prompt
 session.pick_category(gets.chomp)
 session.new_game
 #make Game.new
-
 
 #session.pick_category('7')
 session.make_answers
