@@ -15,21 +15,36 @@ class Session
     print"'Mine Your Intelligence'\n"
     print "\n"
     print "\n"
+  end
+
+  def prompt_user_name
     print "Please enter a username \n"
     print "*********************** \n"
     print "\n"
   end
 
+# def get_user_name(input)
+#   # binding.pry
+#   if input.length <= 0
+#     print "Please enter a valid username you fucking idiot"
+#     self.prompt_user_name
+#   else
+#     self.pick_user(input)
+#   end
+# end
+
   # custom find_or_create_by for user
   def pick_user(input)
+  # binding.pry
     input_user =  User.find_by(name:"#{input}")
-
     if input_user.nil?
       self.user = User.create(name:"#{input}")
     else
       self.user = input_user
     end
   end
+
+
 
   def category_prompt
     print "Please enter number to pick a category \n"
