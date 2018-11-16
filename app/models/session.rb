@@ -11,11 +11,8 @@ class Session
   end
 
   def welcome
-
-    print <<-HEREDOC
-
-
-    HEREDOC
+    print "Welcome to Ruby Trvia \n"
+    print"'Mine Your Intelligence'\n"
     print "\n"
     print "\n"
     print "Please enter a username \n"
@@ -23,6 +20,7 @@ class Session
     print "\n"
   end
 
+  # custom find_or_create_by for user
   def pick_user(input)
     input_user =  User.find_by(name:"#{input}")
 
@@ -49,11 +47,10 @@ class Session
     print "\n"
   end
 
-
-
-
+  # - Selects a category based on the input of the user.
+  # - Adds id of question to ANSWERED_QUESTION pool to prevent that question
+  #   from repeating during the current session
   def pick_category(input)
-    # input=gets.chomp
     case input
     when  '1'
       self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category:'History').sample
@@ -76,6 +73,8 @@ class Session
     ANSWERED_QUESTIONS << self.question
   end
 
+  # Combines the correct and incorrect answers into array,
+  # the shuffles them for a random order
   def make_answers
     answers = []
     answers << self.question[:correct_answer]
@@ -85,7 +84,7 @@ class Session
     @answers=answers.shuffle
   end
 
-
+  # Prints the question, and decodes HTML special characters from data
   def print_question
     ready_answers = self.answers.each_with_index.map do |val,index|
        "#{index+1}. #{HTMLEntities.new.decode val}"
@@ -103,6 +102,7 @@ class Session
     self.game = Game.create(user_id: self.user.id, question_id: self.question.id)
   end
 
+  # chooses answer based on user input and the index of the shuffled answers
   def get_text_answer(answer)
     index = answer.to_i - 1
     self.answers[index]
@@ -118,6 +118,12 @@ class Session
   #   end
   # end
 
+  def get_text_answer(answer)
+    index = answer.to_i - 1
+    self.answers[index]
+  end
+
+  # Checks answer and saves game to db
   def check_answer(answer)
     user_answer = self.get_text_answer(answer)
     if user_answer == self.question[:correct_answer]
@@ -139,15 +145,12 @@ class Session
     answer.to_i.between(1,4)
   end
 
-  def get_text_answer(answer)
-    index = answer.to_i - 1
-    self.answers[index]
-  end
-
   def input
     gets.chomp
   end
 
+  # Asks player to play again then either creates another game,
+  # ends game, or views player's stats
   def play_again?
     print "\n"
     print "Would you like to play again? Enter: \n"

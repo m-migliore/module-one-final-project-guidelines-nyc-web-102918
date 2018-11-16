@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :games
   has_many :questions, through: :games
 
+  # Collects all questions that the user answered correctly from games
   def correct_questions
     self.winning_games.map do |game|
       game.question
@@ -52,6 +53,7 @@ class User < ActiveRecord::Base
     self.correct_questions.length
   end
 
+  # Creates hash of wins for each category for user
   def wins_by_category
     total_wins = {
       "History" => history_correct.length,
