@@ -41,10 +41,15 @@ class Session
     print "4. Music \n"
     print "5. General Knowledge \n"
     print "6. Sports \n"
-    print "7. Random \n"
+    print "7. Random Category\n"
     print "\n"
     print "************************************** \n"
     print "\n"
+  end
+
+  # Helper method to select question from certain category
+  def question_from(category)
+    Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category: category).sample
   end
 
   # - Selects a category based on the input of the user.
@@ -53,17 +58,17 @@ class Session
   def pick_category(input)
     case input
     when  '1'
-      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category:'History').sample
+      self.question=self.question_from('History')
     when '2'
-      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category:'Geography').sample
+      self.question=self.question_from('Geography')
     when '3'
-      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category:'Entertainment: Film').sample
+      self.question=self.question_from('Entertainment: Film')
     when '4'
-      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category:'Entertainment: Music').sample
+      self.question=self.question_from('Entertainment: Music')
     when '5'
-      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category:'General Knowledge').sample
+      self.question=self.question_from('General Knowledge')
     when '6'
-      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category:'Sports').sample
+      self.question=self.question_from('Sports')
     when '7'
       self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).sample
     else
