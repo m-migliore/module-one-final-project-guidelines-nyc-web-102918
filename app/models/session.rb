@@ -1,16 +1,13 @@
 class Session
   attr_accessor :question ,:answers, :user, :game
 
-  # QUESTION_BANK = Question.all
   ANSWERED_QUESTIONS = []
 
   def initialize
-    # @question = Question.all.sample
     @question = question
     @answers = answers
     @user = user
     @game = game
-    @@all << self
   end
 
   def welcome
@@ -59,17 +56,17 @@ class Session
     # input=gets.chomp
     case input
     when  '1'
-      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id))where(category:'History').sample
+      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category:'History').sample
     when '2'
-      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id))where(category:'Geography').sample
+      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category:'Geography').sample
     when '3'
-      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id))where(category:'Entertainment: Film').sample
+      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category:'Entertainment: Film').sample
     when '4'
-      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id))where(category:'Entertainment: Music').sample
+      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category:'Entertainment: Music').sample
     when '5'
-      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id))where(category:'General Knowledge').sample
+      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category:'General Knowledge').sample
     when '6'
-      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id))where(category:'Sports').sample
+      self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category:'Sports').sample
     when '7'
       self.question=Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).sample
     else
