@@ -172,8 +172,14 @@ class Session
       print "Bye. Thanks for playing \n"
     when '3'
       system "clear"
+      print "Your Stats \n"
+      print "********** \n"
+      print "\n"
       print "You have answered #{self.user.correct_percentage}% correctly. \n"
-      print "Your best category is: #{self.user.best_category}"
+      print "Your best category: #{self.user.best_category} \n"
+      print "Your worst category is: #{self.user.worst_category} \n"
+      print "\n"
+      self.play_again?
     end
   end
 

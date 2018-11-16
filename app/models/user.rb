@@ -52,18 +52,38 @@ class User < ActiveRecord::Base
     self.correct_questions.length
   end
 
-  def best_category
-    total_wins={
+  def wins_by_category
+    total_wins = {
       "History" => history_correct.length,
       "Geography" => geography_correct.length,
       "Film" => film_correct.length,
       "Music" => music_correct.length,
       "General Knowledge" => general_knowledge_correct.length,
       "Sports" => sports_correct.length
-      }
-    sorted_total_wins = total_wins.sort {|a,b| b[1]<=>a[1]}.to_h
-    sorted_total_wins.keys.first
+    }
+    total_wins.sort {|a,b| b[1]<=>a[1]}.to_h
   end
+
+  def best_category
+    self.wins_by_category.keys.first
+  end
+
+  def worst_category
+    self.wins_by_category.keys.last
+  end
+
+  # def best_category
+  #   total_wins={
+  #     "History" => history_correct.length,
+  #     "Geography" => geography_correct.length,
+  #     "Film" => film_correct.length,
+  #     "Music" => music_correct.length,
+  #     "General Knowledge" => general_knowledge_correct.length,
+  #     "Sports" => sports_correct.length
+  #     }
+  #   sorted_total_wins = total_wins.sort {|a,b| b[1]<=>a[1]}.to_h
+  #   sorted_total_wins.keys.first
+  # end
 
   def total_question_amount
     Game.where(user_id: self.id).length
