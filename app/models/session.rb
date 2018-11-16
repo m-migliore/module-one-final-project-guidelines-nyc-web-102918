@@ -12,7 +12,43 @@ class Session
 
   def welcome
     print "Welcome to Ruby Trvia \n"
-    print"'Mine Your Intelligence'\n"
+    welcome=
+    <<-'EOF'
+      ___       __   __         ___    ___  __      __        __         ___  __
+|  | |__  |    /  ` /  \  |\/| |__      |  /  \    |__) |  | |__) \ /     |  |__) | \  / |  /\
+|/\| |___ |___ \__, \__/  |  | |___     |  \__/    |  \ \__/ |__)  |      |  |  \ |  \/  | /~~\
+    EOF
+
+    print welcome
+
+ruby=
+<<-'EOF'
+
+
+                                   _____ ____ _____
+                                  /    /      \    \
+                                 /____/_________\__ \
+                                 \   \          /   /
+                                   \  \        /  /
+                                     \  \    /  /
+                                       \  \/  /
+                                          \/
+EOF
+print ruby
+
+intro =
+ <<-'EOF'
+
+ __  __ _             __   __                 ___       _       _ _ _
+|  \/  (_)_ __   ___  \ \ / /__  _   _ _ __  |_ _|_ __ | |_ ___| | (_) __ _  ___ _ __   ___ ___
+| |\/| | | '_ \ / _ \  \ V / _ \| | | | '__|  | || '_ \| __/ _ \ | | |/ _` |/ _ \ '_ \ / __/ _ \
+| |  | | | | | |  __/   | | (_) | |_| | |     | || | | | ||  __/ | | | (_| |  __/ | | | (_|  __/
+|_|  |_|_|_| |_|\___|   |_|\___/ \__,_|_|    |___|_| |_|\__\___|_|_|_|\__, |\___|_| |_|\___\___|
+                                                                      |___/
+    EOF
+    print intro
+
+
     print "\n"
     print "\n"
   end
@@ -22,6 +58,7 @@ class Session
     print "*********************** \n"
     print "\n"
   end
+
 
 # def get_user_name(input)
 #   # binding.pry
@@ -140,12 +177,23 @@ class Session
       self.game.status = "correct"
       self.game.save
       system "clear"
-      print "YAY \n"
+
+      yay= <<-'EOF'
+╦ ╦╔═╗╦ ╦┬
+╚╦╝╠═╣╚╦╝│
+ ╩ ╩ ╩ ╩ o
+      EOF
+      print yay
     else
       self.game.status = "incorrect"
       self.game.save
       system "clear"
-      print "BOOO \n"
+      boo=<<-'EOF'
+╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗╔═╗╔═╗╔═╗╔═╗┬
+╠╩╗║ ║║ ║║ ║║ ║║ ║║ ║║ ║║ ║║ ║│
+╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝o
+      EOF
+      print boo
       print "The correct answer is #{HTMLEntities.new.decode self.question[:correct_answer]}\n"
     end
   end
@@ -184,7 +232,21 @@ class Session
       self.play_again?
     when '2'
       system "clear"
-      print "Bye. Thanks for playing \n"
+
+      bye= <<-'EOF'
+______                 _____ _                 _            __                   _             _               _
+| ___ \               |_   _| |               | |          / _|                 | |           (_)             | |
+| |_/ /_   _  ___       | | | |__   __ _ _ __ | | _____   | |_ ___  _ __   _ __ | | __ _ _   _ _ _ __   __ _  | |
+| ___ \ | | |/ _ \      | | | '_ \ / _` | '_ \| |/ / __|  |  _/ _ \| '__| | '_ \| |/ _` | | | | | '_ \ / _` | | |
+| |_/ / |_| |  __/  _   | | | | | | (_| | | | |   <\__ \  | || (_) | |    | |_) | | (_| | |_| | | | | | (_| | |_|
+\____/ \__, |\___/ (_)  \_/ |_| |_|\__,_|_| |_|_|\_\___/  |_| \___/|_|    | .__/|_|\__,_|\__, |_|_| |_|\__, | (_)
+        __/ |                                                             | |             __/ |         __/ |
+       |___/                                                              |_|            |___/         |___/
+
+
+      EOF
+      print bye
+      # print "Bye. Thanks for playing \n"
     when '3'
       system "clear"
       print "Your Stats \n"
