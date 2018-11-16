@@ -113,16 +113,6 @@ class Session
     self.answers[index]
   end
 
-  # def check_answer(answer)
-  #   # answer=gets.chomp
-  #   if self.valid_answer?
-  #     if answer==self.question[:correct_answer]
-  #     end
-  #   else
-  #     "Please input a number between 1 and 4"
-  #   end
-  # end
-
   def get_text_answer(answer)
     index = answer.to_i - 1
     self.answers[index]
@@ -193,26 +183,5 @@ class Session
     end
   end
 
-  # def new_round(input)
-  #   # self.category_prompt                   #
-  #   # self.pick_category(gets.chomp)
-  #   # system "clear"
-  #   # self.new_game
-  #   # self.make_answers
-  #   # self.print_question
-  #   # self.check_answer(gets.chomp)
-  #   # self.play_again?
-  # end
-
-
-# def get_all_questions_answered_incorrectedly
-#   Question.includes(:games).where(games: {status: "incorrect"})
-# end
-
-
-# to prevent duplicate questions from appearing, when new question is selected, its id is added to an array
-# then a new pick_category is run based on to selct question where the id is not in the old array
-
-# if no new questions, thne print 'you answered' everything'
 
 end

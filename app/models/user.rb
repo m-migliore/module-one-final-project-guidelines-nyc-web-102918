@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
       "General Knowledge" => general_knowledge_correct.length,
       "Sports" => sports_correct.length
     }
-    total_wins.sort {|a,b| b[1]<=>a[1]}.to_h
+    total_wins.sort {|cat1,cat2| cat2[1]<=>cat1[1]}.to_h
   end
 
   def best_category
