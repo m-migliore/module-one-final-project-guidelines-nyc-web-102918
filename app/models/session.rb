@@ -11,7 +11,6 @@ class Session
   end
 
   def welcome
-    print "Welcome to Ruby Trvia \n"
     welcome=
     <<-'EOF'
       ___       __   __         ___    ___  __      __        __         ___  __
