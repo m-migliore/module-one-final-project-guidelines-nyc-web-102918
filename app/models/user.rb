@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
   end
 
   def worst_category
-    if self.wins_by_category.values.last < 1
+    if self.wins_by_category.values.last == 0
       "Worst Category Not Available \n"
     else
       "Worst Category: #{self.wins_by_category.keys.last} \n"
