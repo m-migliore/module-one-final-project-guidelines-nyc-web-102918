@@ -56,6 +56,8 @@ class Session
   end
 
   # Helper method to select question from certain category
+  # When a question is selected with pick_category, it is added to the class constant ANSWERED_QUESTIONS during a session
+  # This selects a question from the Quesiton database with with and id that doesnt belong to an id of a question in ANSWERED_QUESTIONS
   def question_from(category)
     Question.where.not(id: ANSWERED_QUESTIONS.pluck(:id)).where(category: category).sample
   end
@@ -184,9 +186,9 @@ class Session
       print "Your Stats \n"
       print "********** \n"
       print "\n"
-      print "You have answered #{self.user.correct_percentage}% correctly. \n"
-      print "Your best category: #{self.user.best_category} \n"
-      print "Your worst category is: #{self.user.worst_category} \n"
+      print self.user.correct_percentage
+      print self.user.best_category
+      print self.user.worst_category
       print "\n"
       self.play_again?
     end
